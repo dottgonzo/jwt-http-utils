@@ -1,0 +1,38 @@
+{
+  "name": "jwt-http-utils",
+  "version": "0.0.0",
+  "description": "jwt http headers utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/tsc",
+    "watch-ts": "./node_modules/.bin/tsc -w",
+    "release:patch": "npm run build && npm version patch && git push && git push --tags && npm publish",
+    "release:minor": "npm run build && npm version minor && git push && git push --tags && npm publish",
+    "release:major": "npm run build && npm version major && git push && git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dottgonzo/jwt-http-utils.git"
+  },
+  "keywords": [
+    "jwt",
+    "http",
+    "node"
+  ],
+  "author": "Dario Caruso",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/dottgonzo/jwt-http-utils/issues"
+  },
+  "homepage": "https://github.com/dottgonzo/jwt-http-utils#readme",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/node": "^20.3.2",
+    "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.2"
+  }
+}
