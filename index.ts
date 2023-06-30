@@ -11,7 +11,7 @@ export type TJWTUser = {};
 export default class JwtHttpInterceptor {
   secret: string;
   config: TJWTConfig;
-  constructor(secret: string, config: TJWTConfig) {
+  constructor(secret: string, config?: TJWTConfig) {
     this.secret = secret;
     if (!this.secret) {
       throw new Error("JwtHttpInterceptor: secret is required");
@@ -126,7 +126,7 @@ export default class JwtHttpInterceptor {
 
 export function getJwtHttpInterceptor(
   secret: string,
-  config: TJWTConfig
+  config?: TJWTConfig
 ): JwtHttpInterceptor {
   if (
     !config &&
