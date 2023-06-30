@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getJwtHttpInterceptor = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class JwtHttpInterceptor {
     constructor(secret, config) {
@@ -104,4 +105,23 @@ class JwtHttpInterceptor {
     }
 }
 exports.default = JwtHttpInterceptor;
+function getJwtHttpInterceptor(secret, config) {
+    if (!config &&
+        (process.env.TOKENEXPIRESINSECONDS ||
+            process.env.ISSUER ||
+            process.env.AUDIENCE)) {
+        config = {};
+        if (process.env.TOKENEXPIRESINSECONDS) {
+            config.expiresIn = Number(process.env.TOKENEXPIRESINSECONDS);
+        }
+        if (process.env.ISSUER) {
+            config.issuer = process.env.ISSUER;
+        }
+        if (process.env.AUDIENCE) {
+            config.audience = process.env.AUDIENCE;
+        }
+    }
+    return new JwtHttpInterceptor(secret, config);
+}
+exports.getJwtHttpInterceptor = getJwtHttpInterceptor;
 //# sourceMappingURL=index.js.map

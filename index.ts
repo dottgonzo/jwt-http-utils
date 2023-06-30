@@ -123,3 +123,28 @@ export default class JwtHttpInterceptor {
     return token;
   }
 }
+
+export function getJwtHttpInterceptor(
+  secret: string,
+  config: TJWTConfig
+): JwtHttpInterceptor {
+  if (
+    !config &&
+    (process.env.TOKENEXPIRESINSECONDS ||
+      process.env.ISSUER ||
+      process.env.AUDIENCE)
+  ) {
+    config = {} as TJWTConfig;
+    if (process.env.TOKENEXPIRESINSECONDS) {
+      config.expiresIn = Number(process.env.TOKENEXPIRESINSECONDS);
+    }
+    if (process.env.ISSUER) {
+      config.issuer = process.env.ISSUER;
+    }
+    if (process.env.AUDIENCE) {
+      config.audience = process.env.AUDIENCE;
+    }
+  }
+
+  return new JwtHttpInterceptor(secret, config);
+}
