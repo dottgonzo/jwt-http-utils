@@ -46,7 +46,7 @@ export default class JwtHttpInterceptor {
     });
   }
   async verifyRequest(
-    req: IncomingMessage & { user: TJWTUser },
+    req: IncomingMessage & { user?: TJWTUser },
     res: ServerResponse<IncomingMessage> & {
       req: IncomingMessage;
     }
@@ -63,7 +63,7 @@ export default class JwtHttpInterceptor {
     }
   }
   async verifyUrlQueryParams(
-    req: IncomingMessage & { user: TJWTUser },
+    req: IncomingMessage & { user?: TJWTUser },
     res: ServerResponse<IncomingMessage> & {
       req: IncomingMessage;
     }
@@ -83,7 +83,7 @@ export default class JwtHttpInterceptor {
     }
   }
   async verifyHeader(
-    req: IncomingMessage & { user: TJWTUser },
+    req: IncomingMessage & { user?: TJWTUser },
     res: ServerResponse<IncomingMessage> & {
       req: IncomingMessage;
     }
