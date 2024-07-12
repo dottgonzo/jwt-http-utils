@@ -112,7 +112,9 @@ export default class JwtHttpInterceptor {
   }
   getTokenByHeader(req: IncomingMessage): string {
     let token: string;
-    const authorization = req.headers["Authorization"] as string;
+    const authorization =
+      (req.headers["Authorization"] as string) ||
+      (req.headers["authorization"] as string);
     if (!authorization) {
       throw new Error("JwtHttpInterceptor: authorization is required");
     }
