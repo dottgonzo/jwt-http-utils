@@ -1,6 +1,6 @@
 {
   "name": "jwt-http-utils",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "jwt http headers utils",
   "main": "index.js",
   "scripts": {
