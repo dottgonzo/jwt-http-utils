@@ -72,13 +72,11 @@ export default class JwtHttpInterceptor {
     try {
       token = this.getTokenByUrlQueryParams(req);
     } catch {
-      res.statusCode = 401;
       throw new Error("JwtHttpInterceptor: token is required");
     }
     try {
       req.user = await this.verify(token);
     } catch {
-      res.statusCode = 401;
       throw new Error("JwtHttpInterceptor: token is invalid");
     }
   }
@@ -92,13 +90,11 @@ export default class JwtHttpInterceptor {
     try {
       token = this.getTokenByHeader(req);
     } catch {
-      res.statusCode = 401;
       throw new Error("JwtHttpInterceptor: token is required");
     }
     try {
       req.user = await this.verify(token);
     } catch {
-      res.statusCode = 401;
       throw new Error("JwtHttpInterceptor: token is invalid");
     }
   }
